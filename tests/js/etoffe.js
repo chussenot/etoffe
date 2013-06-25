@@ -39,6 +39,9 @@
       if (!canvas) {
         return;
       }
+      if (!buttons) {
+        buttons = textile.defaultButtons;
+      }
       toolbar = document.createElement("div");
       toolbar.id = "etoffe-toolbar-" + canvas;
       toolbar.className = 'etoffe-toolbar';
@@ -63,6 +66,21 @@
             standardButtons.push(button);
           }
         }
+        i++;
+      }
+      buttons = toolbar.getElementsByTagName("button");
+      i = 0;
+      while (i < buttons.length) {
+        if (!buttons[i].onclick) {
+          buttons[i].onclick = function() {
+            return alert("click");
+          };
+        }
+        buttons[i].tagStart = buttons[i].getAttribute("tagStart");
+        buttons[i].tagEnd = buttons[i].getAttribute("tagEnd");
+        buttons[i].open = buttons[i].getAttribute("open");
+        buttons[i].textile_editor = this;
+        buttons[i].canvas = canvas;
         i++;
       }
     }
@@ -119,6 +137,8 @@
   buttons.push(new EtoffeButton("ed_h3", "h3.png", "h3", "\n", "3", "Header 3"));
 
   buttons.push(new EtoffeButton("ed_h4", "h4.png", "h4", "\n", "4", "Header 4"));
+
+  buttons.push('<button id="ed_strong" class="standard" tagstart="*" tagend="*" open="undefined" accesskey="b" title="Bold"><img src="assets/editor/bold.png"></button>');
 
   classes.defaultButtons = buttons;
 
