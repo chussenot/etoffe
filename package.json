@@ -1,8 +1,8 @@
 {
-  "name": "blabla-editor",
+  "name": "etoffe-editor",
   "version": "0.0.2",
   "description": "",
-  "main": "blabla.js",
+  "main": "etoffe.js",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
