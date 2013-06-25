@@ -1,0 +1,22 @@
+{
+  "name": "blabla-editor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "blabla.js",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-qunit": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-sass": "~0.3.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-release": "~0.3.3",
+    "grunt-contrib-copy": "~0.4.0"
+  },
+  "repository": "",
+  "author": "Clément Hussenot",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
