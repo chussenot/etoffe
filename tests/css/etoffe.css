@@ -1,0 +1,44 @@
+.etoffe-toolbar {
+  background-color: #f0f0ee;
+  padding: 3px;
+  margin-bottom: 4px;
+}
+.etoffe-toolbar span.ed_sep {
+  xposition: relative;
+  xtop: -4px;
+  padding: 0;
+  height: 6px;
+  width: 2px;
+  margin: 0 2px;
+  border-left: solid 1px #d5d5d5;
+  border-right: solid 1px whitesmoke;
+}
+.etoffe-toolbar button {
+  margin: 0;
+  background-color: #f0f0ee;
+  background-repeat: no-repeat;
+  border: 1px solid #f0f0ee;
+  padding: 2px 0;
+}
+.etoffe-toolbar button.standard {
+  text-align: center;
+  width: 24px;
+}
+.etoffe-toolbar button img {
+  vertical-align: text-bottom;
+}
+.etoffe-toolbar button:hover, .etoffe-toolbar button.unselected:hover {
+  border: 1px solid #999999;
+}
+.etoffe-toolbar button.selected {
+  border: 1px solid #ce9100;
+  background-color: white;
+}
+.etoffe-toolbar button.unselected {
+  border: 1px solid #f0f0ee;
+  background-color: #f0f0ee;
+}
+.etoffe-toolbar button.publish {
+  padding: 5px;
+  display: block;
+}
