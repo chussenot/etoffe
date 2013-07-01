@@ -1,5 +1,5 @@
 (function() {
-  var Etoffe, EtoffeButton, EtoffeSeparator, buttons, classes, global;
+  var Etoffe, EtoffeButton, EtoffeSeparator, classes, global;
 
   global = this;
 
@@ -11,15 +11,30 @@
 
   EtoffeButton = (function() {
     function EtoffeButton(id, display, tagStart, tagEnd, access, title, sve, open) {
-      this.id = id;
-      this.display = display;
-      this.tagStart = tagStart;
-      this.tagEnd = tagEnd;
-      this.access = access;
-      this.title = title;
-      this.sve = sve;
-      this.open = open;
-      this.standard = true;
+      var o;
+      if (typeof id === "string") {
+        this.id = id;
+        this.display = display;
+        this.tagStart = tagStart;
+        this.tagEnd = tagEnd;
+        this.access = access;
+        this.title = title;
+        this.sve = sve;
+        this.open = open;
+        this.standard = true;
+      }
+      if (typeof id === "object") {
+        o = id;
+        this.id = o.id;
+        this.display = o.display;
+        this.tagStart = o.tagStart;
+        this.tagEnd = o.tagEnd;
+        this.access = o.access;
+        this.title = o.title;
+        this.sve = o.sve;
+        this.open = o.open;
+        this.standard = true;
+      }
     }
 
     return EtoffeButton;
@@ -90,7 +105,7 @@
       if (button.separator) {
         el = document.createElement("span");
         el.className = "ed_sep";
-        return el;
+        el;
       }
       if (button.standard) {
         el = document.createElement("button");
@@ -103,10 +118,12 @@
         img.src = "assets/editor/" + button.display;
         el.appendChild(img);
       } else {
-        return button;
+        button;
       }
-      el.accessKey = button.access;
-      el.title = button.title;
+      if (el) {
+        el.accessKey = button.access;
+        el.title = button.title;
+      }
       return el;
     };
 
@@ -114,33 +131,7 @@
 
   })();
 
-  buttons = [];
-
-  buttons.push(new EtoffeButton("ed_strong", "bold.png", "*", "*", "b", "Bold", "s"));
-
-  buttons.push(new EtoffeButton("ed_emphasis", "italic.png", "_", "_", "i", "Italicize", "s"));
-
-  buttons.push(new EtoffeButton("ed_underline", "underline.png", "+", "+", "u", "Underline", "s"));
-
-  buttons.push(new EtoffeButton("ed_strike", "strikethrough.png", "-", "-", "s", "Strikethrough", "s"));
-
-  buttons.push(new EtoffeButton("ed_ol", "list_numbers.png", " # ", "\n", ",", "Numbered List"));
-
-  buttons.push(new EtoffeButton("ed_ul", "list_bullets.png", " * ", "\n", ".", "Bulleted List"));
-
-  buttons.push(new EtoffeButton("ed_p", "paragraph.png", "p", "\n", "p", "Paragraph"));
-
-  buttons.push(new EtoffeButton("ed_h1", "h1.png", "h1", "\n", "1", "Header 1"));
-
-  buttons.push(new EtoffeButton("ed_h2", "h2.png", "h2", "\n", "2", "Header 2"));
-
-  buttons.push(new EtoffeButton("ed_h3", "h3.png", "h3", "\n", "3", "Header 3"));
-
-  buttons.push(new EtoffeButton("ed_h4", "h4.png", "h4", "\n", "4", "Header 4"));
-
-  buttons.push('<button id="ed_strong" class="standard" tagstart="*" tagend="*" open="undefined" accesskey="b" title="Bold"><img src="assets/editor/bold.png"></button>');
-
-  classes.defaultButtons = buttons;
+  include("default");
 
   classes.EtoffeButton = EtoffeButton;
 

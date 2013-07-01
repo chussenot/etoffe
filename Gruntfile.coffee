@@ -37,7 +37,7 @@ module.exports = (grunt) ->
         ]
         
   # These plugins provide necessary tasks.
-  # grunt.loadNpmTasks "grunt-contrib-concat"
+  grunt.loadNpmTasks "grunt-contrib-concat"
   # grunt.loadNpmTasks "grunt-contrib-uglify"
   # grunt.loadNpmTasks "grunt-contrib-qunit"
   # grunt.loadNpmTasks "grunt-contrib-jshint"

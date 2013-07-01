@@ -1,0 +1,96 @@
+{
+  "buttons": [
+    {
+      "id": "ed_strong",
+      "display": "bold.png",
+      "tagStart": "*",
+      "tagEnd": "*",
+      "access": "b",
+      "title": "Bold",
+      "sve": "s"
+    },
+    {
+      "id": "ed_emphasis",
+      "display": "italic.png",
+      "tagStart": "_",
+      "tagEnd": "_",
+      "access": "i",
+      "title": "Italicize",
+      "sve": "s"
+    },
+    {
+      "id": "ed_underline",
+      "display": "underline.png",
+      "tagStart": "+",
+      "tagEnd": "+",
+      "access": "u",
+      "title": "Underline",
+      "sve": "s"
+    },
+    {
+      "id": "ed_strike",
+      "display": "strikethrough.png",
+      "tagStart": "-",
+      "tagEnd": "-",
+      "access": "s",
+      "title": "Strikethrough",
+      "sve": "s"
+    },
+    {
+      "id": "ed_ol",
+      "display": "list_numbers.png",
+      "tagStart": " # ",
+      "tagEnd": "\n",
+      "access": ",",
+      "title": "Numbered List"
+    },
+    {
+      "id": "ed_ul",
+      "display": "list_bullets.png",
+      "tagStart": " * ",
+      "tagEnd": "\n",
+      "access": ".",
+      "title": "Bulleted List"
+    },
+    {
+      "id": "ed_p",
+      "display": "paragraph.png",
+      "tagStart": "p",
+      "tagEnd": "\n",
+      "access": "p",
+      "title": "Paragraph"
+    },
+    {
+      "id": "ed_h1",
+      "display": "h1.png",
+      "tagStart": "h1",
+      "tagEnd": "\n",
+      "access": "1",
+      "title": "Header 1"
+    },
+    {
+      "id": "ed_h2",
+      "display": "h2.png",
+      "tagStart": "h2",
+      "tagEnd": "\n",
+      "access": "2",
+      "title": "Header 2"
+    },
+    {
+      "id": "ed_h3",
+      "display": "h3.png",
+      "tagStart": "h3",
+      "tagEnd": "\n",
+      "access": "3",
+      "title": "Header 3"
+    },
+    {
+      "id": "ed_h4",
+      "display": "h4.png",
+      "tagStart": "h4",
+      "tagEnd": "\n",
+      "access": "4",
+      "title": "Header 4"
+    }
+  ]
+}

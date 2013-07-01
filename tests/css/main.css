@@ -1,10 +1,21 @@
+html {
+  overflow: hidden;
+  height: 100%;
+}
 body {
-  font-family: Verdana;
-  font-size: 12px;
-  background: #EEFFEE;
+  font-family: Helvetica, sans-serif;
+  font-size: 13px;
+  background: #ddd;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 textarea {
   width: 600px;
   height: 200px;
+  font-family: "andale mono", "lucida console", monospace;
+  font-size: 12px;
+  display: block;
+  resize: none;
 }

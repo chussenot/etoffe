@@ -5,15 +5,27 @@ classes = global.textile
 
 class EtoffeButton
   constructor: (id, display, tagStart, tagEnd, access, title, sve, open) ->
-    @id = id                # used to name the toolbar button
-    @display = display      # label on button
-    @tagStart = tagStart    # open tag
-    @tagEnd = tagEnd        # close tag
-    @access = access        # set to -1 if tag does not need to be closed
-    @title = title          # sets the title attribute of the button to give 'tool tips'
-    @sve = sve              # sve = simple vs. extended. add an 's' to make it show up in the simple toolbar
-    @open = open            # set to -1 if tag does not need to be closed
-    @standard = true        # this is a standard button
+    if typeof id is "string"
+      @id = id                # used to name the toolbar button
+      @display = display      # label on button
+      @tagStart = tagStart    # open tag
+      @tagEnd = tagEnd        # close tag
+      @access = access        # set to -1 if tag does not need to be closed
+      @title = title          # sets the title attribute of the button to give 'tool tips'
+      @sve = sve              # sve = simple vs. extended. add an 's' to make it show up in the simple toolbar
+      @open = open            # set to -1 if tag does not need to be closed
+      @standard = true        # this is a standard button
+    if typeof id is "object"
+      o = id
+      @id = o.id 
+      @display = o.display 
+      @tagStart = o.tagStart 
+      @tagEnd = o.tagEnd 
+      @access = o.access
+      @title = o.title 
+      @sve = o.sve 
+      @open = o.open 
+      @standard = true
 
 class EtoffeSeparator
   constructor: () ->
@@ -64,7 +76,7 @@ class Etoffe
     if button.separator
       el = document.createElement("span")
       el.className = "ed_sep"
-      return el
+      el
     if button.standard
       el = document.createElement("button")
       el.id = button.id
@@ -76,25 +88,116 @@ class Etoffe
       img.src = "assets/editor/" + button.display
       el.appendChild img
     else
-      return button
-    # end if !custom
-    el.accessKey = button.access
-    el.title = button.title
+      button
+    if el
+      el.accessKey = button.access
+      el.title = button.title
     el
 
+########
+
 buttons = []
-buttons.push new EtoffeButton("ed_strong", "bold.png", "*", "*", "b", "Bold", "s")
-buttons.push new EtoffeButton("ed_emphasis", "italic.png", "_", "_", "i", "Italicize", "s")
-buttons.push new EtoffeButton("ed_underline", "underline.png", "+", "+", "u", "Underline", "s")
-buttons.push new EtoffeButton("ed_strike", "strikethrough.png", "-", "-", "s", "Strikethrough", "s")
-buttons.push new EtoffeButton("ed_ol", "list_numbers.png", " # ", "\n", ",", "Numbered List")
-buttons.push new EtoffeButton("ed_ul", "list_bullets.png", " * ", "\n", ".", "Bulleted List")
-buttons.push new EtoffeButton("ed_p", "paragraph.png", "p", "\n", "p", "Paragraph")
-buttons.push new EtoffeButton("ed_h1", "h1.png", "h1", "\n", "1", "Header 1")
-buttons.push new EtoffeButton("ed_h2", "h2.png", "h2", "\n", "2", "Header 2")
-buttons.push new EtoffeButton("ed_h3", "h3.png", "h3", "\n", "3", "Header 3")
-buttons.push new EtoffeButton("ed_h4", "h4.png", "h4", "\n", "4", "Header 4") 
-buttons.push '<button id="ed_strong" class="standard" tagstart="*" tagend="*" open="undefined" accesskey="b" title="Bold"><img src="assets/editor/bold.png"></button>'
+conf = {
+  "buttons": [
+    {
+      "id": "ed_strong",
+      "display": "bold.png",
+      "tagStart": "*",
+      "tagEnd": "*",
+      "access": "b",
+      "title": "Bold",
+      "sve": "s"
+    },
+    {
+      "id": "ed_emphasis",
+      "display": "italic.png",
+      "tagStart": "_",
+      "tagEnd": "_",
+      "access": "i",
+      "title": "Italicize",
+      "sve": "s"
+    },
+    {
+      "id": "ed_underline",
+      "display": "underline.png",
+      "tagStart": "+",
+      "tagEnd": "+",
+      "access": "u",
+      "title": "Underline",
+      "sve": "s"
+    },
+    {
+      "id": "ed_strike",
+      "display": "strikethrough.png",
+      "tagStart": "-",
+      "tagEnd": "-",
+      "access": "s",
+      "title": "Strikethrough",
+      "sve": "s"
+    },
+    {
+      "id": "ed_ol",
+      "display": "list_numbers.png",
+      "tagStart": " # ",
+      "tagEnd": "\n",
+      "access": ",",
+      "title": "Numbered List"
+    },
+    {
+      "id": "ed_ul",
+      "display": "list_bullets.png",
+      "tagStart": " * ",
+      "tagEnd": "\n",
+      "access": ".",
+      "title": "Bulleted List"
+    },
+    {
+      "id": "ed_p",
+      "display": "paragraph.png",
+      "tagStart": "p",
+      "tagEnd": "\n",
+      "access": "p",
+      "title": "Paragraph"
+    },
+    {
+      "id": "ed_h1",
+      "display": "h1.png",
+      "tagStart": "h1",
+      "tagEnd": "\n",
+      "access": "1",
+      "title": "Header 1"
+    },
+    {
+      "id": "ed_h2",
+      "display": "h2.png",
+      "tagStart": "h2",
+      "tagEnd": "\n",
+      "access": "2",
+      "title": "Header 2"
+    },
+    {
+      "id": "ed_h3",
+      "display": "h3.png",
+      "tagStart": "h3",
+      "tagEnd": "\n",
+      "access": "3",
+      "title": "Header 3"
+    },
+    {
+      "id": "ed_h4",
+      "display": "h4.png",
+      "tagStart": "h4",
+      "tagEnd": "\n",
+      "access": "4",
+      "title": "Header 4"
+    }
+  ]
+}
+
+_.each conf.buttons, (b) ->
+  buttons.push new EtoffeButton(b)
+
+#########
 
 classes.defaultButtons  = buttons
 classes.EtoffeButton    = EtoffeButton
