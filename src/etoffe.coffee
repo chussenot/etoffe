@@ -38,6 +38,7 @@ class Editor
     toolbar.id = "etoffe-toolbar-" + canvas
     toolbar.className = 'etoffe-toolbar'
     el = document.getElementById(canvas)
+    el.className = 'etoffe-editor'
     el.parentNode.insertBefore(toolbar, el)
     
     # attach buttons
