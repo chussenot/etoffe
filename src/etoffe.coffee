@@ -1,9 +1,9 @@
 global = this
 
-global.textile ?= {}
-classes = global.textile
+global.etoffe ?= {}
+classes = global.etoffe
 
-class EtoffeButton
+class Button
   constructor: (id, display, tagStart, tagEnd, access, title, sve, open) ->
     if typeof id is "string"
       @id = id                # used to name the toolbar button
@@ -27,13 +27,13 @@ class EtoffeButton
       @open = o.open 
       @standard = true
 
-class EtoffeSeparator
+class Separator
   constructor: () ->
 
-class Etoffe
+class Editor
   constructor: (canvas, view, buttons) ->
     return if !canvas
-    buttons = textile.defaultButtons if !buttons
+    buttons = etoffe.defaultButtons if !buttons
     toolbar = document.createElement("div")
     toolbar.id = "etoffe-toolbar-" + canvas
     toolbar.className = 'etoffe-toolbar'
@@ -195,11 +195,11 @@ conf = {
 }
 
 _.each conf.buttons, (b) ->
-  buttons.push new EtoffeButton(b)
+  buttons.push new Button(b)
 
 #########
 
 classes.defaultButtons  = buttons
-classes.EtoffeButton    = EtoffeButton
-classes.EtoffeSeparator = EtoffeSeparator
-classes.Etoffe          = Etoffe
+classes.Button    = Button
+classes.Separator = Separator
+classes.Editor    = Editor
