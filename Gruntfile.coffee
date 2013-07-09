@@ -1,4 +1,13 @@
+"use strict"
+LIVERELOAD_PORT = 35729
+lrSnippet = require("connect-livereload")(port: LIVERELOAD_PORT)
+mountFolder = (connect, dir) ->
+  connect.static require("path").resolve(dir)
+
 module.exports = (grunt) ->
+  # autoload all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
   grunt.initConfig
 
     pkg: "<json:package.json>"
@@ -30,25 +39,35 @@ module.exports = (grunt) ->
         files: [
           {
           expand: false,
-          src: ['src/assets/**'],
-          dest: 'tests/'
+          src: ['assets/etoffe/*'],
+          dest: 'tests/',
+          filter: 'isFile',
+          flatten: true
           }
         ]
-    bower:
-      target:
-        rjsConfig: 'tests/js/config.js'
+    watch:
+      css:
+        files: ['src/stylesheets/*.sass'],
+        tasks: ['sass']
+      coffee:
+        files: ['src/javascripts/*.coffee']
+        tasks: ['coffee']
 
-  # These plugins provide necessary tasks.
-  grunt.loadNpmTasks "grunt-contrib-concat"
-  # grunt.loadNpmTasks "grunt-contrib-uglify"
-  # grunt.loadNpmTasks "grunt-contrib-qunit"
-  # grunt.loadNpmTasks "grunt-contrib-jshint"
-  # grunt.loadNpmTasks "grunt-contrib-watch"
-  grunt.loadNpmTasks "grunt-contrib-sass"
-  grunt.loadNpmTasks "grunt-contrib-coffee"
-  grunt.loadNpmTasks "grunt-release"
-  grunt.loadNpmTasks "grunt-contrib-copy"
-  grunt.loadNpmTasks "grunt-bower-requirejs"
+    connect:
+      options:
+        port: 9000
+        # change this to '0.0.0.0' to access the server from outside
+        hostname: "localhost"
+      livereload:
+        options:
+          middleware: (connect) ->
+            [lrSnippet, mountFolder(connect, ".tmp"), mountFolder(connect, 'tests')]
+
+    open:
+      server:
+        path: "http://localhost:<%= connect.options.port %>"
 
   # Default task.
-  grunt.registerTask "default", ["coffee","sass","copy"]
+  grunt.registerTask "build", ["coffee","sass","copy"]
+  grunt.registerTask "default", ["build"]
+  grunt.registerTask "server", ["build","open","connect:livereload:keepalive"]
