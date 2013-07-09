@@ -1,6 +1,6 @@
 {
   "name": "etoffe",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "dependencies": {
     "jquery": "~2.0.3",
     "underscore": "~1.5.1",
