@@ -86,7 +86,7 @@ class Editor
       el.setAttribute "tagEnd", button.tagEnd
       el.setAttribute "open", button.open
       img = document.createElement("img")
-      img.src = "assets/editor/" + button.display
+      img.src = "assets/etoffe/" + button.display
       el.appendChild img
     else
       button
