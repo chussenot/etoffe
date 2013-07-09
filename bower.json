@@ -2,9 +2,10 @@
   "name": "etoffe",
   "version": "0.0.5",
   "dependencies": {
-    "jquery": "~2.0.2",
-    "underscore": "~1.4.4",
-    "markdown": "~0.4.0"
+    "jquery": "~2.0.3",
+    "underscore": "~1.5.1",
+    "markdown": "~0.4.0",
+    "requirejs": "~2.1.8"
   },
   "ignore": [
     "**/.*",

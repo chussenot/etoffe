@@ -1,11 +1,10 @@
-
-module.exports = (grunt) -> 
-  grunt.initConfig  
+module.exports = (grunt) ->
+  grunt.initConfig
 
     pkg: "<json:package.json>"
     meta:
       banner: "/*! <%= pkg.name %> - v<%= pkg.version %> - " + "<%= grunt.template.today(\"yyyy-mm-dd\") %> */"
-    
+
     # Task configuration.
     release:
       options:
@@ -18,24 +17,27 @@ module.exports = (grunt) ->
     coffee:
       compile:
         files:
-          "tests/js/etoffe.js": "src/etoffe.coffee"
+          "tests/js/etoffe.js": "src/javascripts/etoffe.coffee"
     sass:
       css:
         options:
           unixNewlines: true,
           style: 'expanded'
         files:
-          'tests/css/etoffe.css': 'src/etoffe.sass'
+          'tests/css/etoffe.css': 'src/stylesheets/etoffe.sass'
     copy:
       main:
         files: [
           {
-          expand: true,
-          src: ['assets/**'],
+          expand: false,
+          src: ['src/assets/**'],
           dest: 'tests/'
           }
         ]
-        
+    bower:
+      target:
+        rjsConfig: 'tests/js/config.js'
+
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks "grunt-contrib-concat"
   # grunt.loadNpmTasks "grunt-contrib-uglify"
@@ -46,6 +48,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-release"
   grunt.loadNpmTasks "grunt-contrib-copy"
-  
+  grunt.loadNpmTasks "grunt-bower-requirejs"
+
   # Default task.
   grunt.registerTask "default", ["coffee","sass","copy"]

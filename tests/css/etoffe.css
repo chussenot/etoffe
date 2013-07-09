@@ -1,5 +1,18 @@
 .etoffe-editor {
-  width: 400px;
+  width: 100%;
+  background-color: white;
+  border-collapse: separate;
+  border: 1px solid #cccccc;
+  padding: 4px;
+  box-sizing: content-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.07451) 0px 1px 1px 0px inset;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  overflow: scroll;
+  outline: none;
 }
 
 .etoffe-toolbar {
@@ -7,7 +20,7 @@
   padding: 3px;
   margin: 10px 0 2px;
   height: 20px;
-  width: 400px;
+  width: 100%;
 }
 .etoffe-toolbar span.ed_sep {
   xposition: relative;
